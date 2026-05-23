@@ -22,7 +22,7 @@ jobs:
 
       # instalação do node
       - uses: actions/setup-node@v4
-        whith:
+        with:
           node-version: 24.x
       
       # instalação do yarn
