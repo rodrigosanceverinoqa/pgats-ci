@@ -3,16 +3,13 @@ stages:
 
 e2e-tests:
   stage: test
-  
-  image: node:24
+
+  image: mcr.microsoft.com/playwright:v1.54.0-noble
 
   when: manual
 
   before_script:
-    - npm install -g yarn
     - yarn
-    - npx playwright install
-    - npx playwright install-deps
 
   script:
     - yarn run e2e
