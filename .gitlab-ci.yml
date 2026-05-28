@@ -1,0 +1,18 @@
+stages:
+  - test
+
+e2e-tests:
+  stage: test
+  
+  image: node:24
+
+  when: manual
+
+  before_script:
+    - npm install -g yarn
+    - yarn
+    - npx playwright install
+    - npx playwright install-deps
+
+  script:
+    - yarn run e2e
