@@ -1,13 +1,5 @@
 # CI de Nível 01 - Disparo manual através de clique
 
-# nome da pipeline
-# No GitLab, o nome da pipeline é definido no workflow:name
-workflow:
-  name: 'Execução Manual'
-  # Garante que a pipeline só apareça quando disparada manualmente
-  rules:
-    - when: manual
-
 # estágios da pipeline
 stages:
   - test
