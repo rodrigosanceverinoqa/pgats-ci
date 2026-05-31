@@ -1,15 +1,39 @@
+# CI de Nível 01 - Disparo manual através de clique
+
+# nome da pipeline
+# No GitLab, o nome da pipeline é definido no workflow:name
+workflow:
+  name: 'Execução Manual'
+  # Garante que a pipeline só apareça quando disparada manualmente
+  rules:
+    - when: manual
+
+# estágios da pipeline
 stages:
   - test
 
+# tarefas dentro da pipeline = jobs
 e2e-tests:
+  # estágio ao qual o job pertence
   stage: test
 
-  image: mcr.microsoft.com/playwright:v1.54.0-noble
+  # imagem Docker com Node.js (equivalente ao runs-on + setup-node do GitHub Actions)
+  image: node:24
 
-  when: manual
+  # regra de disparo manual (equivalente ao workflow_dispatch do GitHub Actions)
+  rules:
+    - when: manual
 
-  before_script:
+  # definir os passos do job (equivalente aos steps do GitHub Actions)
+  script:
+    # instalação do yarn
+    - npm install -g yarn
+
+    # instalação das dependências
     - yarn
 
-  script:
+    # instalação dos browsers do Playwright
+    - yarn playwright install --with-deps
+
+    # executar os testes e2e
     - yarn run e2e
