@@ -18,9 +18,6 @@ e2e-tests:
 
   # definir os passos do job (equivalente aos steps do GitHub Actions)
   script:
-    # instalação do yarn
-    - npm install -g yarn
-
     # instalação das dependências
     - yarn
 
