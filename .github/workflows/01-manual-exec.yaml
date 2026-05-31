@@ -13,7 +13,8 @@ jobs:
   # nome do job
   e2e-tests:
     # maquina onde o job vai rodar
-    runs-on: ubuntu-latest
+    # runs-on: ubuntu-latest
+    runs-on: [self-hosted, windows]
 
     # definir os passos do job
     steps:
@@ -46,7 +47,7 @@ jobs:
         continue-on-error: true
 
 
-      - name: Relatório HTML do Playwright
+      - name: Relatório HTML do 'Playwright
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
