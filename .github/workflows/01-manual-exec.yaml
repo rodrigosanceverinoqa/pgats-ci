@@ -25,14 +25,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24.x
-      
+
       # instalação do yarn
       - name: Instalando yarn
         run: npm install -g yarn
 
       # instalação das dependências
       - name: Instalando dependências
-        run: yarn 
+        run: yarn
 
       # instalação dos browsers do Playwright
       - name: Instalando browsers do Playwright
@@ -42,10 +42,9 @@ jobs:
       - name: Executando testes e2e
         run: yarn run e2e
 
-      # continue-on-error: garante que o próximo passo (upload do relatório)
-      # seja executado mesmo que os testes falhem
+        # continue-on-error: garante que o próximo passo (upload do relatório)
+        # seja executado mesmo que os testes falhem
         continue-on-error: true
-
 
       - name: Relatório HTML do 'Playwright
         uses: actions/upload-artifact@v4

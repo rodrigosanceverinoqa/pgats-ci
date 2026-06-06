@@ -7,12 +7,12 @@ name: 'Execução Agendada'
 # gatilho programado = schedule + cron
 on:
   schedule:
-  # cronograma de execução - formato cron
-  # 1 - minuto (0-59)
-  # 2 - hora (0-23)
-  # 3 - dia do mês (1-31)
-  # 4 - mês (1-12)
-  # 5 - dia da semana (0-7, onde 0 e 7 representam domingo)
+    # cronograma de execução - formato cron
+    # 1 - minuto (0-59)
+    # 2 - hora (0-23)
+    # 3 - dia do mês (1-31)
+    # 4 - mês (1-12)
+    # 5 - dia da semana (0-7, onde 0 e 7 representam domingo)
     - cron: '*/30 * * * *' # a cada 30 minutos
   # - cron: '0 0 * * 5' -> toda sexta-feira à meia-noite
 
@@ -33,14 +33,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 24.x
-      
+
       # instalação do yarn
       - name: Instalando yarn
         run: npm install -g yarn
 
       # instalação das dependências
       - name: Instalando dependências
-        run: yarn 
+        run: yarn
 
       # instalação dos browsers do Playwright
       - name: Instalando browsers do Playwright
@@ -50,10 +50,9 @@ jobs:
       - name: Executando testes e2e
         run: yarn run e2e
 
-      # continue-on-error: garante que o próximo passo (upload do relatório)
-      # seja executado mesmo que os testes falhem
+        # continue-on-error: garante que o próximo passo (upload do relatório)
+        # seja executado mesmo que os testes falhem
         continue-on-error: true
-
 
       - name: Relatório HTML do Playwright
         uses: actions/upload-artifact@v4
