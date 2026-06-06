@@ -1,19 +1,17 @@
-# CI de Nível 02 - Disparo programado através de agenda
+# CI de Nível 03 - Disparo após a conclusão de outra pipeline
 
 # nome da pipeline
-name: 'Execução Agendada'
+name: 'Execução por Deploy'
 
 # gatilhos ou triggers - regras de disparo
-# gatilho programado = schedule + cron
+# gatilho após a conclusão de outra pipeline = workflow_run
 on:
-  schedule:
-  # cronograma de execução - formato cron
-  # 1 - minuto (0-59)
-  # 2 - hora (0-23)
-  # 3 - dia do mês (1-31)
-  # 4 - mês (1-12)
-  # 5 - dia da semana (0-7, onde 0 e 7 representam domingo)
-    - cron: '*/6 * * * *' # a cada 6 minutos
+  workflow_run:
+    # nome da pipeline que deve ser monitorada
+    workflows: ['Execução Manual']
+    # tipo de evento que deve ocorrer na pipeline monitorada para disparar esta pipeline
+    types: 
+      - completed
 
 # tarefas dentro da pipeline = jobs
 jobs:
@@ -54,7 +52,7 @@ jobs:
         continue-on-error: true
 
 
-      - name: Relatório HTML do Playwright
+      - name: Relatório HTML do 'Playwright
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
