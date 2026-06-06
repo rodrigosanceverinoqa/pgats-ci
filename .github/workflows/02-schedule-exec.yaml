@@ -13,7 +13,8 @@ on:
   # 3 - dia do mês (1-31)
   # 4 - mês (1-12)
   # 5 - dia da semana (0-7, onde 0 e 7 representam domingo)
-    - cron: '*/6 * * * *' # a cada 6 minutos
+    - cron: '*/30 * * * *' # a cada 30 minutos
+  # - cron: '0 0 * * 5' -> toda sexta-feira à meia-noite
 
 # tarefas dentro da pipeline = jobs
 jobs:

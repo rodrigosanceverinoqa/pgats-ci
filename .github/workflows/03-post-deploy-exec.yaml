@@ -20,6 +20,7 @@ jobs:
     # maquina onde o job vai rodar
     runs-on: ubuntu-latest
     # runs-on: [self-hosted, windows]
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     # definir os passos do job
     steps:
