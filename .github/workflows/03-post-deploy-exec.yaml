@@ -1,14 +1,14 @@
 # CI de Nível 03 - Disparo após a conclusão de outra pipeline
 
 # nome da pipeline
-name: 'Execução por Deploy'
+name: 'N3 - Execução por Deploy'
 
 # gatilhos ou triggers - regras de disparo
 # gatilho após a conclusão de outra pipeline = workflow_run
 on:
   workflow_run:
     # nome da pipeline que deve ser monitorada
-    workflows: ['Execução Manual']
+    workflows: ['N1 - Execução Manual']
     # tipo de evento que deve ocorrer na pipeline monitorada para disparar esta pipeline
     types:
       - completed

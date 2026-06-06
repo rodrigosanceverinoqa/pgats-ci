@@ -1,7 +1,7 @@
 # CI de Nível 02 - Disparo programado através de agenda
 
 # nome da pipeline
-name: 'Execução Agendada'
+name: 'N2 - Execução Agendada'
 
 # gatilhos ou triggers - regras de disparo
 # gatilho programado = schedule + cron
